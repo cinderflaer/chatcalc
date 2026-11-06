@@ -2,7 +2,7 @@ package ca.rttv.chatcalc;
 
 import com.google.common.collect.Streams;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
 
 import java.nio.charset.StandardCharsets;
 
@@ -183,9 +183,9 @@ public class NibbleMathEngine implements MathEngine {
                     while ((bytes[idx] >= 'a' & bytes[idx] <= 'z') | (bytes[idx] >= 'A' & bytes[idx] <= 'Z')) idx++;
                     String param = new String(bytes, start, idx - start, StandardCharsets.US_ASCII);
                     if (!bite('=')) throw new IllegalArgumentException("Expected starting value for parameter in summation");
-                    int lowerBound = MathHelper.floor(expression());
+                    int lowerBound = Mth.floor(expression());
                     if (!bite(';')) throw new IllegalArgumentException("Expected multiple parameters in summation");
-                    int upperBound = MathHelper.floor(expression());
+                    int upperBound = Mth.floor(expression());
                     if (!bite(';')) throw new IllegalArgumentException("Expected multiple parameters in summation");
                     start = idx;
                     for (int parenthesis = 0; parenthesis >= 0; idx++) {
@@ -219,9 +219,9 @@ public class NibbleMathEngine implements MathEngine {
                     while ((bytes[idx] >= 'a' & bytes[idx] <= 'z') | (bytes[idx] >= 'A' & bytes[idx] <= 'Z')) idx++;
                     String param = new String(bytes, start, idx - start, StandardCharsets.US_ASCII);
                     if (!bite('=')) throw new IllegalArgumentException("Expected starting value for parameter in product");
-                    int lowerBound = MathHelper.floor(expression());
+                    int lowerBound = Mth.floor(expression());
                     if (!bite(';')) throw new IllegalArgumentException("Expected multiple parameters in product");
-                    int upperBound = MathHelper.floor(expression());
+                    int upperBound = Mth.floor(expression());
                     if (!bite(';')) throw new IllegalArgumentException("Expected multiple parameters in product");
                     start = idx;
                     for (int parenthesis = 0; parenthesis >= 0; idx++) {
