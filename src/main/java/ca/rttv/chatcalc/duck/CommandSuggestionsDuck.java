@@ -4,6 +4,6 @@ import com.mojang.brigadier.suggestion.Suggestions;
 
 import java.util.concurrent.CompletableFuture;
 
-public interface ChatInputSuggesterDuck {
+public interface CommandSuggestionsDuck {
     CompletableFuture<Suggestions> chatcalc$pendingSuggestions();
 }
